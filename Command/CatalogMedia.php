@@ -94,23 +94,23 @@ class CatalogMedia extends Command
                 self::INPUT_KEY_REMOVE_UNUSED,
                 'r',
                 InputOption::VALUE_NONE,
-            'Remove unused product images')
-            ->addOption(
+                'Remove unused product images'
+            )->addOption(
                 self::INPUT_KEY_REMOVE_ORPHANED_ROWS,
                 'o',
                 InputOption::VALUE_NONE,
-                'Remove orphaned media gallery rows')
-            ->addOption(
+                'Remove orphaned media gallery rows'
+            )->addOption(
                 self::INPUT_KEY_LIST_MISSING,
                 'm',
                 InputOption::VALUE_NONE,
-                'List missing media files')
-            ->addOption(
+                'List missing media files'
+            )->addOption(
                 self::INPUT_KEY_LIST_UNUSED,
                 'u',
                 InputOption::VALUE_NONE,
-                'List unused media files')
-            ->addOption(
+                'List unused media files'
+            )->addOption(
                 self::INPUT_KEY_MOVE_UNUSED,
                 'd',
                 InputOption::VALUE_NONE,
