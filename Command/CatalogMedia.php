@@ -91,31 +91,31 @@ class CatalogMedia extends Command
         $this->setName('sivaschenko:catalog:media')
             ->setDescription('Get information about catalog product media')
             ->addOption(
-            self::INPUT_KEY_REMOVE_UNUSED,
-            'r',
-            InputOption::VALUE_NONE,
+                self::INPUT_KEY_REMOVE_UNUSED,
+                'r',
+                InputOption::VALUE_NONE,
             'Remove unused product images')
             ->addOption(
-            self::INPUT_KEY_REMOVE_ORPHANED_ROWS,
-            'o',
-            InputOption::VALUE_NONE,
-            'Remove orphaned media gallery rows')
+                self::INPUT_KEY_REMOVE_ORPHANED_ROWS,
+                'o',
+                InputOption::VALUE_NONE,
+                'Remove orphaned media gallery rows')
             ->addOption(
-            self::INPUT_KEY_LIST_MISSING,
-            'm',
-            InputOption::VALUE_NONE,
-            'List missing media files')
+                self::INPUT_KEY_LIST_MISSING,
+                'm',
+                InputOption::VALUE_NONE,
+                'List missing media files')
             ->addOption(
-            self::INPUT_KEY_LIST_UNUSED,
-            'u',
-            InputOption::VALUE_NONE,
-            'List unused media files')
+                self::INPUT_KEY_LIST_UNUSED,
+                'u',
+                InputOption::VALUE_NONE,
+                'List unused media files')
             ->addOption(
-            self::INPUT_KEY_MOVE_UNUSED,
-            'd',
-            InputOption::VALUE_NONE,
-            'Move unused image files to the unused folder'
-        );
+                self::INPUT_KEY_MOVE_UNUSED,
+                'd',
+                InputOption::VALUE_NONE,
+                'Move unused image files to the unused folder'
+            );
         parent::configure();
     }
 
@@ -205,9 +205,9 @@ class CatalogMedia extends Command
     private function getMediaGalleryPaths()
     {
         $connection = $this->resource->getConnection();
-        $select = $connection->select()->from($this->resource->getTableName(Gallery::GALLERY_TABLE))->reset(
-            Select::COLUMNS
-        )->columns('value');
+        $select = $connection->select()
+            ->from($this->resource->getTableName(Gallery::GALLERY_TABLE))
+            ->reset(Select::COLUMNS)->columns('value');
 
         return $connection->fetchCol($select);
     }
