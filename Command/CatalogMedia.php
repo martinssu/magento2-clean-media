@@ -29,24 +29,29 @@ class CatalogMedia extends Command
      * Input key for removing unused images
      */
     const INPUT_KEY_REMOVE_UNUSED = 'remove_unused';
+
     /**
      * Inpu tkey for removing orphaned media gallery rows
      */
     const INPUT_KEY_REMOVE_ORPHANED_ROWS = 'remove_orphaned_rows';
+
     /**
      * Input key for listing missing files
      */
     const INPUT_KEY_LIST_MISSING = 'list_missing';
+
     /**
      * Input key for listing unused files
      */
     const INPUT_KEY_LIST_UNUSED = 'list_unused';
+
     /**
      * Input key for moving unused files
      */
     const INPUT_KEY_MOVE_UNUSED = 'move_unused';
+
     /**
-     *
+     * Folder name for unused image storage
      */
     const DIRECTORY_MOVE_UNUSED = 'unused';
 
@@ -83,29 +88,29 @@ class CatalogMedia extends Command
      */
     protected function configure()
     {
-        $this->setName('sivaschenko:catalog:media')->setDescription(
-            'Get information about catalog product media'
-        )->addOption(
+        $this->setName('sivaschenko:catalog:media')
+            ->setDescription('Get information about catalog product media')
+            ->addOption(
             self::INPUT_KEY_REMOVE_UNUSED,
             'r',
             InputOption::VALUE_NONE,
-            'Remove unused product images'
-        )->addOption(
+            'Remove unused product images')
+            ->addOption(
             self::INPUT_KEY_REMOVE_ORPHANED_ROWS,
             'o',
             InputOption::VALUE_NONE,
-            'Remove orphaned media gallery rows'
-        )->addOption(
+            'Remove orphaned media gallery rows')
+            ->addOption(
             self::INPUT_KEY_LIST_MISSING,
             'm',
             InputOption::VALUE_NONE,
-            'List missing media files'
-        )->addOption(
+            'List missing media files')
+            ->addOption(
             self::INPUT_KEY_LIST_UNUSED,
             'u',
             InputOption::VALUE_NONE,
-            'List unused media files'
-        )->addOption(
+            'List unused media files')
+            ->addOption(
             self::INPUT_KEY_MOVE_UNUSED,
             'd',
             InputOption::VALUE_NONE,
@@ -136,7 +141,7 @@ class CatalogMedia extends Command
             $output->writeln('Unused files:');
         }
         if ($input->getOption(self::INPUT_KEY_MOVE_UNUSED)) {
-            $output->writeln('<info>Moved to the unused folder</info>');
+            $output->writeln('<info>Moved to the "pub/media/unused" folder</info>');
         }
 
         /** @var $info SplFileInfo */
@@ -164,6 +169,7 @@ class CatalogMedia extends Command
                         $info->getPathname()
                     );
 
+                    $directory->renameFile($info->getPathname(), $unusedPath);
                     $output->writeln($unusedPath);
                 }
             }
